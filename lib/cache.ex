@@ -9,7 +9,7 @@ defmodule Price.Cache do
   end
 
   def init do
-    %{ "BTC": 1.35 }
+    ExCmc.API.fetch_latest_prices()
   end
 
   def fetch_latest_price(crypto_currency) do
