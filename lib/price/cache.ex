@@ -14,8 +14,15 @@ defmodule Price.Cache do
 
   def fetch_latest_price(crypto_currency) do
     Agent.get(@me, fn(state) ->
-      state
+      IO.inspect(state)
+      find_price(state, crypto_currency)
     end)
+  end
+
+  def find_price(state, crypto_currency) do
+    Enum.find(state, fn(price) ->
+      price["symbol"] == crypto_currency
+    end)["price_usd"]
   end
 
 end
