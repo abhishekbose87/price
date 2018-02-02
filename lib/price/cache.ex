@@ -23,6 +23,7 @@ defmodule Price.Cache do
     Enum.find(state, fn(price) ->
       price["symbol"] == crypto_currency
     end)["price_usd"]
+    |> String.to_float
   end
 
   def update do
